@@ -10,7 +10,8 @@ Reference: https://realpython.com/python3-object-oriented-programming/#what-is-o
 class Account:
     # A constructor method to initialize account with an identifier
     def __init__(self, identifier):
-        pass
+        self.identifier=identifier
+        self.balance=0
 
     # Provide output when account object is printed
     def __str__(self):
@@ -18,24 +19,22 @@ class Account:
 
     # To get balance of this account
     def balance(self):
-        pass
+        return self.balance
 
     # to deposit money to this account
     def deposit(self, amount):
-        pass
+        self.balance=self.balance+amount
 
     # to withdraw money from this account
     def withdraw(self, amount):
-        pass
+        self.balance=self.balance-amount
 
 
 # Define a main method
 if __name__ == '__main__':
-    pass
-    # TODO create an account, and print the object
+    account1=Account('current')
 
-    # TODO deposit some money to this account, and print the object
-
-    # TODO withdraw some money from this account, and print the object
-
-    # TODO create another account, and print the object
+    print(account1)
+    account1.deposit(1000000)
+    account1.withdraw(50000)
+    print(account1)

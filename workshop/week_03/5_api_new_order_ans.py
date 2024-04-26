@@ -23,8 +23,8 @@ import hashlib
 import requests
 
 
-API_KEY = ''
-API_SECRET = ''
+API_KEY = '290e05900cf1de7842447837c46ba9ed88d1d1857eab9643d449b6a5abd4e3a9'
+API_SECRET = '31001b513c6709e4754d36924e7599d562bd48c676aedda6ff9f6b03cbfa2e15'
 
 # timestamp in milliseconds
 timestamp = int(time.time() * 1000)
@@ -34,7 +34,7 @@ order_params = {
     "symbol": "BTCUSDT",
     "side": "BUY",
     "type": "MARKET",
-    "quantity": 0.1,
+    "quantity": 0.01,
     "timestamp": timestamp,
     "recvWindow": 10000
 }

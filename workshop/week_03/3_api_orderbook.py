@@ -41,12 +41,18 @@ def parse(json_object: {}) -> OrderBook:
     # TODO process bids side
     bids = []
     for level in json_object['bids']:
-        pass
+        _price=level[0]
+        _size=level[1]
+        tier=Tier(_price, _size)
+        bids.append(tier)
 
     # TODO process asks side
     asks = []
     for level in json_object['asks']:
-        pass
+        _price=level[0]
+        _size=level[1]
+        tier=Tier(_price, _size)
+        asks.append(tier)
 
     # "T" or "Trade time" is the time of the transaction in milliseconds, divide by 1000 to convert to seconds
     _event_time = float(json_object['T']) / 1000
@@ -54,16 +60,26 @@ def parse(json_object: {}) -> OrderBook:
 
 
 if __name__ == '__main__':
+
+    URL = 'https://fapi.binance.com'
+
+    # https://binance-docs.github.io/apidocs/futures/en/#order-book
+    METHOD = '/fapi/v1/depth'
+
+
     while True:
         # TODO Get request to get order book snapshot of BTCUSDT
-        response = None
+        response = requests.get(URL + METHOD, params={'symbol': 'BTCUSDT'})
+
 
         # TODO Get json object from response
-        json_object = None
+        json_object = response.json()
 
         # TODO call parse() method to convert json message to order book object
-        order_book = None
+        order_book = parse(json_object)
 
         # TODO print top of book
+        print(order_book.best_bid(), order_book.best_ask())
 
         # TODO sleep 1 second
+        time.sleep(1)
