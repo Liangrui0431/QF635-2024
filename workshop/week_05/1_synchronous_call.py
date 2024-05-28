@@ -17,10 +17,12 @@ def factorial(n: int) -> int:
     logging.info("Start factorial calculation for n=" + str(n))
     for i in range(1, n+1):
         # TODO sleep for a second
+        time.sleep(1)
 
         logging.info('Calculating factorial[{}] step = {}'.format(n, i))
 
         # TODO multiply factorial value
+        _result=_result*i
 
     return _result
 

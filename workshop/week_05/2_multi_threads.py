@@ -41,9 +41,16 @@ if __name__ == '__main__':
     thread_2 = Thread(target=factorial, args=(15, result_2))
 
     # TODO start executing both threads
+    thread_1.start()
+    thread_2.start()
 
     # TODO wait for both threads to finish
+    thread_1.join()
+    thread_2.join()
 
     logging.info('Factorial of 10 = {}'.format(result_1[0]))
     logging.info('Factorial of 15 = {}'.format(result_2[0]))
+    print(result_1)
+    print(type(result_1))
+    print(len(result_1))
 

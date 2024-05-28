@@ -8,6 +8,7 @@ import logging
 import asyncio
 import time
 from threading import Thread
+import random
 
 logging.basicConfig(format='%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s', level=logging.INFO)
 
@@ -30,7 +31,9 @@ def run_async_task():
 
 # TODO define a coroutine that continuously print a random number once a second in a while loop
 async def print_forever():
-    pass
+    while True:
+        logging.info(random.randint(0,100))
+        time.sleep(0.25)
 
 if __name__ == '__main__':
     # start the background task

@@ -23,10 +23,10 @@ logging.basicConfig(format='%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5
 
 
 def get_credentials():
-    dotenv_path = '/vault/binance_keys'
+    dotenv_path = 'C:/vault/.testnet_API_secret'
     load_dotenv(dotenv_path=dotenv_path)
     # return api key and secret as tuple
-    return os.getenv('BINANCE_API_KEY'), os.getenv('BINANCE_API_SECRET')
+    return os.getenv('KEY'), os.getenv('SECRET')
 
 
 async def listen_user_data(key, secret, ):

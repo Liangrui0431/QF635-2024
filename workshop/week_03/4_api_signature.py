@@ -10,10 +10,8 @@ import hashlib
 from urllib.parse import urlencode, quote
 
 # Credentials - this is example for convenience, never store in script like this
-api_key = '290e05900cf1de7842447837c46ba9ed88d1d1857eab9643d449b6a5abd4e3a9
-'
-api_secret = '31001b513c6709e4754d36924e7599d562bd48c676aedda6ff9f6b03cbfa2e15
-'
+api_key = '290e05900cf1de7842447837c46ba9ed88d1d1857eab9643d449b6a5abd4e3a9'
+api_secret = '31001b513c6709e4754d36924e7599d562bd48c676aedda6ff9f6b03cbfa2e15'
 
 # Query parameters
 timestamp = 1591702613943

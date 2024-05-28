@@ -14,8 +14,7 @@ async def factorial(n: int) -> int:
     _result = 1
     logging.info("Started calculation for n=" + str(n))
     for i in range(1, n+1):
-        # TODO sleep for 1 second
-
+        await asyncio.sleep(1)
         logging.info('Calculating factorial[{}] step = {}'.format(n, i))
 
         # multiply factorial value
@@ -31,6 +30,8 @@ async def concurrent_calculation() -> []:
     # print the results
     logging.info('Factorial of 10 = {}'.format(results[0]))
     logging.info('Factorial of 15 = {}'.format(results[1]))
+    # print(results)
+    # print(len(results))
 
 
 if __name__ == '__main__':

@@ -13,12 +13,14 @@ import os
 from dotenv import load_dotenv
 
 
-dotenv_path = '/vault/secret_file'
+# dotenv_path = os.path.expanduser('C:/vault/.testnet_API_secret')
+dotenv_path = 'C:/vault/.testnet_API_secret'
+
 load_dotenv(dotenv_path=dotenv_path)
 
-API_KEY = os.getenv('API_KEY')
+API_KEY = os.getenv('KEY')
 print(API_KEY)
 
 # TODO get api secret string
-API_SECRET = os.getenv('API_SECRET')
+API_SECRET = os.getenv('SECRET')
 print(API_SECRET)

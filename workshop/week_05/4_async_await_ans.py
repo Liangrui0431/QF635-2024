@@ -7,6 +7,8 @@ execution before returning, this is also known as blocking call).
 In next exercise, we will learn how to run multiple coroutines in parallel by awaiting on tasks.
 
 """
+
+#this script is a negative example of how async are used wrongly
 import asyncio
 import logging
 

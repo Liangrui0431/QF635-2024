@@ -23,13 +23,13 @@ async def cut_ingredients():
 
 async def cook_food():
     logging.info("Cooking food...")
-    # TODO sleep for 5 seconds
+    await asyncio.sleep(5)
     logging.info("Finished cooking food")
 
 
 async def prepare_dessert():
     logging.info("Preparing dessert...")
-    # TODO sleep for 10 seconds
+    await asyncio.sleep(10)
     logging.info("Finished preparing dessert")
 
 
@@ -38,10 +38,13 @@ async def cook():
 
     # a task signal to asyncio to run the method as soon as it can
     task_1 = asyncio.create_task(cut_ingredients())
-    # TODO create 2 more tasks to do cook_food() and prepare_dessert()
+    task_2 = asyncio.create_task(cook_food())
+    task_3 = asyncio.create_task(prepare_dessert())
 
     # TODO await for tasks to complete
     await task_1
+    await task_2
+    await task_3
 
     logging.info("Finished cooking")
 

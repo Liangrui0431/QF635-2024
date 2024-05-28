@@ -48,11 +48,11 @@ def send_market_order(key: str, secret: str, symbol: str, quantity: float, side:
     # get order id
     response_map = response.json()
     order_id = response_map.get('orderId')
-
+    print(order_id)
     return order_id
 
 
 if __name__ == '__main__':
-    api_key = ''
-    api_secret = ''
-    send_market_order(api_key, api_secret, 'BTCUSDT', 0.1, True)
+    api_key = '290e05900cf1de7842447837c46ba9ed88d1d1857eab9643d449b6a5abd4e3a9'
+    api_secret = '31001b513c6709e4754d36924e7599d562bd48c676aedda6ff9f6b03cbfa2e15'
+    send_market_order(api_key, api_secret, 'BTCUSDT', 0.01, True)

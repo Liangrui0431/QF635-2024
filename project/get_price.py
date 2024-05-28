@@ -1,7 +1,4 @@
-"""
-Create a range trading strategy
 
-"""
 import logging
 import os
 import time
@@ -131,62 +128,3 @@ def send_market_order(key: str, secret: str, sym: str, quantity: float, side: bo
     get_response = session.get(url=url, params={})
     get_response_data = get_response.json()
     return get_response_data['avgPrice']
-
-
-if __name__ == '__main__':
-    # strategy parameters
-    symbol = 'BTCUSDT'
-    # upper_bound = 21840.0
-    upper_bound = 63223.0
-    # lower_bound = 21830.0
-    lower_bound = 63123.0
-    target_size = 0.1
-
-    # get api key and secret
-    api_key, api_secret = get_credentials()
-
-    # strategy position
-    position = 0
-
-    while True:
-        # check market data once per second
-        time.sleep(1)
-
-        # get order book
-        order_book = get_depth(symbol)
-
-        # determine target position
-        target_position = 0
-        if order_book.best_bid() > upper_bound:
-            # above range - go short
-            target_position = -target_size
-        elif order_book.best_ask() < lower_bound:
-            # below range - go long
-            target_position = +target_size
-        elif order_book.best_bid() > lower_bound and order_book.best_ask() < upper_bound:
-            # bid/ask completely inside range - neutral
-            target_position = 0
-        else:
-            # bid/ask at range boundary, not completely inside or outside - keep previous position
-            target_position = position
-
-        # log current state
-        logging.info(
-            'Bid: {}, Ask: {}, Position: {}, Target: {}'.
-            format(order_book.best_bid(), order_book.best_ask(), position, target_position)
-        )
-
-        if target_position != position: # checks whether I should trade
-            # calculate quantity to trade
-            order_qty = target_position - position
-
-            # order to send?
-            if order_qty != 0:
-                is_buy = True if order_qty > 0 else False
-                filled_price = send_market_order(api_key, api_secret, symbol, abs(order_qty), is_buy)
-                position = target_position
-                logging.info('Filled price: {}'.format(filled_price))
-            else:
-                logging.info("Already in target position {}, do nothing".format(target_position))
-        else:
-            logging.info("Hold position")

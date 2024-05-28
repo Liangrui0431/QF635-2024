@@ -190,10 +190,10 @@ def on_execution(order_event: OrderEvent):
 
 if __name__ == '__main__':
     # get api key and secret
-    dotenv_path = '/vault/binance_keys'
+    dotenv_path = 'C:/vault/.testnet_API_secret'
     load_dotenv(dotenv_path=dotenv_path)
-    api_key = os.getenv('BINANCE_API_KEY')
-    api_secret = os.getenv('BINANCE_API_SECRET')
+    api_key = os.getenv('KEY')
+    api_secret = os.getenv('SECRET')
 
     # create a binance gateway object
     binance_gateway = BinanceFutureGateway('BTCUSDT', api_key, api_secret)
