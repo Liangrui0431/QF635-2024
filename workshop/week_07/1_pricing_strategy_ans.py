@@ -154,8 +154,8 @@ if __name__ == '__main__':
     # create a strategy a register callbacks with gateway
 
     strategy = PricingStrategy(symbol, order_size, sensitivity, binance_gateway)
-    binance_gateway.register_execution_callback(strategy.on_execution)
-    binance_gateway.register_depth_callback(strategy.on_orderbook)
+    binance_gateway.register_execution_callback(strategy.on_execution) #listen to execution of order
+    binance_gateway.register_depth_callback(strategy.on_orderbook) #orderbook management, where the magic is at
 
     # start
     binance_gateway.connect()
